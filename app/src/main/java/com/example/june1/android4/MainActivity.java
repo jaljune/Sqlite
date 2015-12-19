@@ -25,11 +25,13 @@ public class MainActivity extends AppCompatActivity {
 
     // layout object
     EditText mEtName;
+    EditText mEtName2;
     Button mBtInsert;
     Button mBtRead;
     Button mBtDelete;
     Button mBtUpdate;
     Button mBtSort;
+    Button mBtDrop;
 
 
     ListView mList;
@@ -47,11 +49,13 @@ public class MainActivity extends AppCompatActivity {
         createTable();
 
         mEtName = (EditText) findViewById(R.id.et_text);
+        mEtName2 = (EditText) findViewById(R.id.et_text2);
         mBtInsert = (Button) findViewById(R.id.bt_insert);
         mBtRead = (Button) findViewById(R.id.bt_read);
         mBtDelete = (Button)findViewById(R.id.bt_delete);
         mBtUpdate = (Button)findViewById(R.id.bt_update);
         mBtSort = (Button)findViewById(R.id.bt_sort);
+        mBtDrop = (Button)findViewById(R.id.bt_drop);
         ListView mList = (ListView) findViewById(R.id.list_view);
 
         mBtInsert.setOnClickListener(new View.OnClickListener() {
@@ -74,7 +78,7 @@ public class MainActivity extends AppCompatActivity {
         mBtDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                int index = Integer.parseInt(mEtName.getText().toString());
+                int index = Integer.parseInt(mEtName2.getText().toString());
                 removeData(index);
             }
         });
@@ -83,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String text = mEtName.getText().toString();
-                int index = Integer.parseInt(mEtName.getText().toString());
+                int index = Integer.parseInt(mEtName2.getText().toString());
                 updateData(index, text);
             }
         });
@@ -97,13 +101,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        mBtDrop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                removeTable();
+                finish();
+            }
+        });
+
         // Create listview
         nameList = new ArrayList<String>();
         musicAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, nameList);
         mList.setAdapter(musicAdapter);
 
-    }
 
+
+    }
 
 //    // Database 생성 및 열기
 //    public void createDatabase(String dbName, int dbMode) {
@@ -197,6 +210,10 @@ public class MainActivity extends AppCompatActivity {
             results.moveToNext();
         }
         results.close();
+    }
+    private void emptyForm() {
+        this.mEtName.setText("");
+        this.mEtName2.setText("");
     }
 
 }

@@ -10,8 +10,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/et_text"
+        android:inputType="none"
+        android:hint="Name:"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignEnd="@+id/et_text2" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/et_text2"
+        android:inputType="none"
+        android:hint="Id:"
+        android:layout_alignBottom="@+id/bt_sort"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/bt_sort" />
 
@@ -20,40 +31,43 @@
         android:layout_height="wrap_content"
         android:text="INSERT"
         android:id="@+id/bt_insert"
-        android:layout_below="@+id/et_text"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignTop="@+id/bt_read"
+        android:layout_alignStart="@+id/bt_sort" />
 
     <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/list_view"
-        android:layout_below="@+id/bt_insert"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/bt_delete"
+
+        />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="READ"
         android:id="@+id/bt_read"
-        android:layout_toRightOf="@+id/et_text" />
+        android:layout_above="@+id/bt_delete"
+        android:layout_toEndOf="@+id/bt_sort" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Delete"
         android:id="@+id/bt_delete"
-        android:layout_below="@+id/et_text"
-        android:layout_toEndOf="@+id/bt_insert" />
+        android:layout_below="@+id/bt_update"
+        android:layout_toStartOf="@+id/bt_update" />
+      " />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Update"
         android:id="@+id/bt_update"
-        android:layout_above="@+id/list_view"
-        android:layout_toEndOf="@+id/bt_delete" />
+        android:layout_alignParentTop="true"
+        android:layout_alignEnd="@+id/list_view" />
 
     <Button
         android:layout_width="wrap_content"
@@ -61,5 +75,12 @@
         android:text="SORT"
         android:id="@+id/bt_sort"
         android:layout_above="@+id/list_view"
-        android:layout_toEndOf="@+id/bt_update" />
+        android:layout_toStartOf="@+id/bt_delete" />
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DROP"
+        android:id="@+id/bt_drop"
+        android:layout_below="@+id/bt_update"
+        android:layout_alignStart="@+id/bt_update" />
 </RelativeLayout>
